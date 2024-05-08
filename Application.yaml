@@ -12,7 +12,8 @@ spec:
   destination:
     namespace: default
     server: 'https://kubernetes.default.svc'
-  project: default
+    namespace: bbsignup
+  project: Bbapp
   syncPolicy:
     automated:
       prune: true
