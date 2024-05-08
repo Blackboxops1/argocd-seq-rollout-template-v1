@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: declarativeproject
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Signup NS
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: bbsignup
+    server: https://kubernetes.default.svc
+
+
+#https://home.robusta.dev/blog/pure-gitops-how-to-create-argocd-applications-without-the-ui
+#To deploy the project, run:
+#kubectl apply -f argoproject.yaml
+
+#Here is a detailed explanation of what each line in this file does
+
+#apiVersion - Source of the Argo CD CRD’s
+#kind - Type of Kubernetes object, in this case an Argo CD AppProject 
+#metadata.name - Name of the project - used to filter apps in the UI 
+#metadata.namespace - Namespace where ArgoCD itself is installed (not necessarily the namespace that applications will be installed to)
+#metadata.finalizers - Include this if you want apps and resources created under this project to be deleted when the project is deleted. Read more about finalizers here.
+#spec.description - Details about the project - can be used to document what this project is for.
+#sourceRepos - Can be useful for compliance purposes. Restrict deployment of manifests to specific repositories to ensure that only applications from this source are deployed into this project. In this case, '*', allows all repositories.
+#destination.namespace  - Helps you organize your applications by only allowing manifests in this project to deploy to the robustaargo namespace.
+#destination.server - Cluster where the application needs to be deployed

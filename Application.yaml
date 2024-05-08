@@ -6,7 +6,8 @@ metadata:
 spec:
   source:
     path: manifests
-    repoURL: 'https://github.com/rotemtam/atlas-argocd-demo'
+#   repoURL: 'https://github.com/rotemtam/atlas-argocd-demo'
+    repoURL: 'https://github.com/Blackboxops1/argocd-seq-rollout-template-template-v1'
     targetRevision: master
   destination:
     namespace: default
